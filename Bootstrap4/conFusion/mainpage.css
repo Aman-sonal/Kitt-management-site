@@ -8,12 +8,9 @@ body{
 .form-box{
     width: 650px;
   border: 5px solid burlywood;
-  border-bottom-right-radius: 20px;
-  border-top-left-radius: 20px;
 }
 .box{
     width:20px;
-    border-top-left-radius:20px;
     left:0%;
     right:100%;
     background-color: chocolate;
@@ -70,7 +67,14 @@ body{
 .btn-1:hover::before{
     height:180%;
 }
+.bck2top{
+    width:50px;
+    height:100px;
+    background-color: black;
+    padding:20px;
+    margin:20px;
+    text-align: center;
 
-
+}
 
  
