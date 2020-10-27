@@ -82,3 +82,19 @@ nav.black{
     margin-left:30px;
    }
 }
+.wrapper{
+    color:darkseagreen;
+}
+.wrapper span::before{
+    content:"";
+    animation: animate infinite 5s;
+
+}
+@keyframes animate{
+    0% {
+        content:'KIITIANS';
+    }
+    50%{
+        content: 'WARDENS';
+    }
+}
