@@ -1,9 +1,15 @@
-body{
+.bg-image{
     background-image: url(KIIT-Campus.jpg);
     -webkit-backdrop-size:cover;
     background-repeat: no-repeat;
     background-size:cover;
     height: 100%;
+}
+.bg-image div img{
+    opacity:.6;
+}
+.nav-item{
+    font-weight: bolder;
 }
 #star{
     background-color: brown;
@@ -97,4 +103,25 @@ nav.black{
     50%{
         content: 'WARDENS';
     }
+}
+.tbl{
+  margin: 30% auto;
+}
+.hostel-drpdwn{
+    height:60px;
+    overflow:auto;
+}
+.table
+{
+    table-layout: fixed;
+    width: 900px;
+    margin: 0 auto;
+    overflow-y: hidden
+}
+.box{
+    width:100%;
+    color: #fff;
+    padding: 10px;
+    display: none;
+    margin-top: 20px;
 }
