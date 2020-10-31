@@ -8,6 +8,10 @@
 .bg-image div img{
     opacity:.6;
 }
+.navbar-brand{
+    padding:0px;
+    margin:0px;
+}
 .nav-item{
     font-weight: bolder;
 }
@@ -105,7 +109,7 @@ nav.black{
     }
 }
 .tbl{
-  margin: 30% auto;
+  margin: 20% auto;
 }
 .hostel-drpdwn{
     height:60px;
@@ -119,9 +123,14 @@ nav.black{
     overflow-y: hidden
 }
 .box{
+    background-color:#aebbb5;
     width:100%;
     color: #fff;
     padding: 10px;
     display: none;
     margin-top: 20px;
+}
+.card-header{
+    background-color: #528060;
+    color: white;
 }
