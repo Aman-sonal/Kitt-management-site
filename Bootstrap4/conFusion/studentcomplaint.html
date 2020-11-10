@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
+    <nav class="navbar navbar-dark navbar-expand-sm bg-dark fixed-top">
         <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar1">
                 <span class="navbar-toggler-icon"></span>
@@ -37,22 +37,27 @@
                         <a class="btn btn-social-icon" href="mailto:"><i class="fa fa-envelope-o"></i></a>
                     </span>
             </div>
+<<<<<<< HEAD
             <button><a class="btn btn-social-icon" href="./Mainpage.html"><span><i class="fa fa-sign-out" aria-hidden="true"></i></span></a>Sign Out </button>
    </div>
+=======
+            <button class="btn btn-success" type="button">Sign Out<span><i class="fa fa-sign-out" aria-hidden="true"></i></span></button>
+        </div>
+>>>>>>> f8d315cc08e35ae12c4db27437ffdc341787aa7a
     </nav>
 
     <div>
         <div class="container mr-auto d-block tbl">
             <div class="card">
-                <h5 class="card-header text-center card-header">Grievances/Request/Enquiry/FeedBack</h5>
+                <h5 class="card-header text-center card-header bg-success">Grievances/ Request/ Enquiry/ FeedBack</h5>
                 <div class="card-body">
                     <div class="card-text mr-auto d-block">
-                        <form>
+                       <form action="test.php?form=true" method="POST">
                             <div class="form-row">
                                 <div class="col-3">
                                     <label for="hostel">Hostel</label>
                                 </div>
-                                <div class='col-auto'>
+                                <div class="col-auto">
                                     <div class="dropdown">
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Click Me !
@@ -75,6 +80,7 @@
                                             <a class="dropdown-item" href="#">K.P-3</a>
                                         </div>
                                     </div> 
+                                    
                                 </div>
                             </div>
                             <div class="form-row my-3">
@@ -96,8 +102,10 @@
                                     <div class="col-6 col-md-1">
                                         <input type="radio" class="form-control" name="selectt" value="other">
                                     </div>
+                                    <button type="submit" class="btn btn-success">SUBMIT</button>
                             </div>
                         </form>
+                        
                         <div class="maintain box">
                             <form>
                                 <div class="form-row">
@@ -136,6 +144,16 @@
                                         <input type="text" row="6" class="form-control" name="description" required>
                                     </div>
                                 </div>
+                                <div class="form-row">
+                                    <div class="col-6 col-md-3">
+                                        <label for="Description">Example textarea</label>
+                                    </div>
+                                    <div class="col-6 col-md-3">
+                                        <textarea class="form-control" id="Description" rows="3" cols="500"></textarea>
+                                    </div>
+                                </div>
+                                    
+                                    
                                 <div class="form-row">
                                     <div class="col-6 col-md-3">
                                         Set Time Interval: * 
@@ -206,20 +224,20 @@
         </div>   
     </div>
 
-    <footer class="ftr">
-        <div >
+    <footer class="ftr bg-dark text-light">
+        <div class="container">
             <div>             
                 <div class="row">
                     <div class="col-12 col-md-6">
                         <h5>Links</h5>
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="#" class="text-light">Home</a></li>
+                            <li><a href="#" class="text-light">About Us</a></li>
+                            <li><a href="#" class="text-light">Contact</a></li>
                         </ul>
                     </div>
-                    <div class=" col-12 col-md-6 mt-5">
-                        <a class="btn btn-social-icon btn-google" href="http://google.com/+"><i class="fa fa-google-plus"></i></a>
+                    <div class="col-12 col-md-6 mt-5 ">
+                        <a class="btn btn-social-icon btn-google " href="http://google.com/+"><i class="fa fa-google-plus"></i></a>
                         <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
                         <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a>
                         <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter"></i></a>

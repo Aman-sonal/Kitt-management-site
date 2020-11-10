@@ -6,12 +6,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> f8d315cc08e35ae12c4db27437ffdc341787aa7a
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
     <link rel="stylesheet" href="mainpage.css">
+<<<<<<< HEAD
 </head>
 
 <body>
@@ -59,16 +64,48 @@
 
     <div>
         <div class="container mr-auto d-block tbl">
+=======
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+</head>
+
+<body>
+    <?php 
+        include 'partials/_dbconnect.php';
+        include 'partials/_header.php';
+    ?>
+ 
+    <div class="container">
+        <?php 
+            if(isset($_GET['alert']))
+            { if($_GET['alert']){
+                echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+        <strong>Success!</strong> Your issue has been successfully registered. We will try to resolve it asap.
+        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+        <span aria-hidden='true'>×</span>
+        </button>
+    </div>";
+            }}
+      ?>
+    </div>
+
+    <div >   
+        <div class="container mr-auto d-block tbl ">
+>>>>>>> f8d315cc08e35ae12c4db27437ffdc341787aa7a
             <div class="card">
                 <h5 class="card-header text-center card-header bg-success">Grievances/ Request/ Enquiry/ FeedBack</h5>
                 <div class="card-body">
                     <div class="card-text mr-auto d-block">
                         <?php
+<<<<<<< HEAD
                         echo '<form action="test.php?form=true" method="POST">
+=======
+                        echo '<form action="partials/_handlecomplaint.php" method="POST">
+>>>>>>> f8d315cc08e35ae12c4db27437ffdc341787aa7a
                             <div class="form-row">
                                 <div class="col-3">
                                     <label for="hostel">Hostel</label>
                                 </div>
+<<<<<<< HEAD
                                 <div class="col-auto">
                                     <!-- <div class="dropdown">
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -93,6 +130,8 @@
                                         </div>
                                     </div>  -->
                                     <!-- <label for="inputState">Hostel :</label> -->
+=======
+>>>>>>> f8d315cc08e35ae12c4db27437ffdc341787aa7a
                                     <div class="form-group col-auto">
                                         <select id="hostel" name="hostel" class="form-control">
                                           <option selected >  K.P-1  </option>
@@ -109,7 +148,11 @@
                                         <label for="Maintainence"> Maintainence/Electical</label>
                                     </div>
                                     <div class="col-6 col-md-1">
+<<<<<<< HEAD
                                         <input type="radio" class="form-control" name="Maintainence"  value="maintain">
+=======
+                                        <input type="radio" class="form-control" name="selectt"  value="maintain">
+>>>>>>> f8d315cc08e35ae12c4db27437ffdc341787aa7a
                                     </div>
                                     <div class="col-6 col-md-3">
                                         <label for="feedback"> FeedBack</label>
@@ -123,7 +166,11 @@
                                     <div class="col-6 col-md-1">
                                         <input type="radio" class="form-control" name="selectt" value="other">
                                     </div>
+<<<<<<< HEAD
                                     <button type="submit" class="btn btn-success">Submit</button>
+=======
+                                    
+>>>>>>> f8d315cc08e35ae12c4db27437ffdc341787aa7a
                             </div>
                         
                         
@@ -134,19 +181,31 @@
                                         <label for="Maintainence">Room Cleaniness</label>
                                     </div>
                                     <div class="col-2 col-md-1">
+<<<<<<< HEAD
                                         <input type="radio" class="form-control" id="main" name="main"  value="Room-Cleaniness"> 
+=======
+                                        <input type="radio" class="form-control"  name="selectM"  value="Room-Cleaniness"> 
+>>>>>>> f8d315cc08e35ae12c4db27437ffdc341787aa7a
                                     </div>
                                     <div class="col-4 col-md-1">
                                         <label for="Other">Others</label> 
                                     </div>
                                     <div class="col-2 col-md-1">
+<<<<<<< HEAD
                                         <input type="radio" class="form-control" name="selectt" value="Others-outside-problems">
+=======
+                                        <input type="radio" class="form-control" name="selectM" value="Others-outside-problems">
+>>>>>>> f8d315cc08e35ae12c4db27437ffdc341787aa7a
                                     </div>
                                     <div class="col-4 col-md-3">
                                         <label for="feedback">Electrical Appliances</label>
                                     </div>
                                     <div class="col-auto col-md-1">
+<<<<<<< HEAD
                                         <input type="radio" class="form-control" name="selectt" value="Electrical-appliances">
+=======
+                                        <input type="radio" class="form-control" name="selectM" value="Electrical-appliances">
+>>>>>>> f8d315cc08e35ae12c4db27437ffdc341787aa7a
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -154,6 +213,7 @@
                                         Contact Number :   * 
                                     </div>
                                     <div class="col-6 col-md-5">
+<<<<<<< HEAD
                                         <input type="telnum" class="form-control" name="phonenumber" placeholder="Whatsapp Number" required>
                                     </div>
                                 </div>
@@ -164,6 +224,25 @@
                                 <div class="form-group">
                                     <label for="Description">Example textarea</label>
                                     <textarea class="form-control" id="Description" rows="3"></textarea>
+=======
+                                        <input type="telnum" class="form-control" name="phone" placeholder="Whatsapp Number" required>
+                                    </div>
+                                </div>
+                                <div class="form-row my-2">
+                                <div class="col-6 col-md-3 ">
+                                    Room Number :   * 
+                                </div>
+                                <div class="col-6 col-md-5 ">
+                                    <input type="text" class="form-control" name="room" placeholder="Room Number" required>
+                                </div>
+                            </div>
+                                <div class="form-row my-2">
+                                    <div class="col-6 col-md-3">
+                                        Description :  * 
+                                    </div>
+                                <div class="form-group ">
+                                         <textarea class="form-control" id="Description" name="Description" rows="3"></textarea>
+>>>>>>> f8d315cc08e35ae12c4db27437ffdc341787aa7a
                                 </div>
                                 </div>
                                 <div class="form-row">
@@ -171,6 +250,7 @@
                                         Set Time Interval: * 
                                     </div>
                                     <div class="col-6 col-md-5 ">
+<<<<<<< HEAD
                                         <label for="timeinterval"><strong>11a.m. - 12 p.m.</strong></label>
                                         <input type="radio"  class="form-control" name="time-interval" value="time-interval" required>
                                         <label for="timeinterval"><strong>2 p.m. - 3 p.m.</strong></label>
@@ -180,6 +260,18 @@
                                     </div>
                                 </div>
                             
+=======
+                                        <label for="time-interval"><strong>11a.m. - 12 p.m.</strong></label>
+                                        <input type="radio"  class="form-control" name="tinterval" value="11a.m. - 12 p.m." required>
+                                        <label for="time-interval"><strong>2 p.m. - 3 p.m.</strong></label>
+                                        <input type="radio"  class="form-control" name="tinterval" value="2 p.m. - 3 p.m." required>
+                                        <label for="time-interval"><strong>5 p.m. - 6 p.m.</strong></label>
+                                        <input type="radio"  class="form-control" name="tinterval" value="5 p.m. - 6 p.m." required>
+                                    </div>
+                                </div>
+                                <center><button type="submit" class="btn btn-success my-2">Submit</button></center>
+                                
+>>>>>>> f8d315cc08e35ae12c4db27437ffdc341787aa7a
                         </div>
                         <div class="feedback box">
                             <table class="table table-hover table-stripped  table-responsive">
@@ -219,6 +311,10 @@
                                   </tr>
                                 </tbody>
                               </table>
+<<<<<<< HEAD
+=======
+                              <button type="submit" class="btn btn-success">Submit</button>
+>>>>>>> f8d315cc08e35ae12c4db27437ffdc341787aa7a
                         </div>
                         <div class="other box">
                             <div class="row row-content">
@@ -229,8 +325,14 @@
                                     <input type="text" rows="12"  cols="50" value="maintain-discipline" name="cyz">
                                 </div>
                             </div>
+<<<<<<< HEAD
                         </div>
                         <button type="submit" class="btn btn-success">Post Comment</button>
+=======
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                        
+>>>>>>> f8d315cc08e35ae12c4db27437ffdc341787aa7a
                         </form>';
                         ?>
                     </div>
@@ -238,6 +340,7 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 
     <footer class="ftr bg-dark text-light">
         <div class="container">
@@ -273,6 +376,57 @@
             </div>
         </div>
     </footer>
+=======
+    <?php
+      if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']=="true" ){
+        echo "logged in";
+         echo '<div> <p> <h2>'.$_SESSION["username"].'</h2></p></div>';
+       }else echo 'not found';
+       
+    ?>
+    <!-- Complaint Table -->
+    <div class="col-12">
+        <div class="container my-2 ">
+
+            <strong>
+                <table class="table" id="myTable">
+                    <thead>
+                        <tr>
+                            <th scope="col">S.No</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Time Slot</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                         <?php 
+        
+                        $sql = "SELECT * FROM `complaint`";
+                        $result = mysqli_query($conn, $sql);
+                        $sno = 0;
+                        while($row = mysqli_fetch_assoc($result)){
+                            $sno = $sno + 1;
+                            echo "<tr>
+                            <th scope='row' class='sorting_1' tabindex='0'>". $sno . "</th>
+                            <td>". $row['com_desc'] . "</td>
+                            <td>". $row['com_status'] . "</td>
+                            <td>". $row['com_timeslot'] . "</td>
+                        </tr>";
+                        }  
+                        ?> 
+
+
+                    </tbody>
+                </table>
+            </strong>
+        </div>
+    </div>
+
+
+    <!-- FOOTER -->
+    <?php include 'partials/_footer.php'; ?>
+    
+>>>>>>> f8d315cc08e35ae12c4db27437ffdc341787aa7a
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
     <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
@@ -281,6 +435,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script type="text/javascript">
+<<<<<<< HEAD
         $(window).on('scroll', function () {
             if ($(window).scrollTop()) {
                 $('nav').addClass('black');
@@ -290,6 +445,8 @@
         })
     </script>
     <script type="text/javascript">
+=======
+>>>>>>> f8d315cc08e35ae12c4db27437ffdc341787aa7a
         $(document).ready(function () {
             $('input[type="radio"]').click(function () {
                 var inputValue = $(this).attr("value");
@@ -299,6 +456,19 @@
             });
         });
     </script>
+<<<<<<< HEAD
+=======
+
+    <!-- data table -->
+    <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+            responsive: true
+        });
+    </script>
+
+>>>>>>> f8d315cc08e35ae12c4db27437ffdc341787aa7a
 </body>
 
 
