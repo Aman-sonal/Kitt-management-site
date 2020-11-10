@@ -20,18 +20,22 @@
         include 'partials/_dbconnect.php';
         include 'partials/_header.php';
     ?>
-   <?php 
-        if(isset($_GET['alert']))
-         { if($_GET['alert']){
-            echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-    <strong>Success!</strong> Your issue has been successfully registered. We will try to resolve it asap.
-    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-      <span aria-hidden='true'>×</span>
-    </button>
-  </div>";
-          }}
+ 
+    <div class="container">
+        <?php 
+            if(isset($_GET['alert']))
+            { if($_GET['alert']){
+                echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+        <strong>Success!</strong> Your issue has been successfully registered. We will try to resolve it asap.
+        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+        <span aria-hidden='true'>×</span>
+        </button>
+    </div>";
+            }}
       ?>
-    <div >
+    </div>
+
+    <div >   
         <div class="container mr-auto d-block tbl ">
             <div class="card">
                 <h5 class="card-header text-center card-header bg-success">Grievances/ Request/ Enquiry/ FeedBack</h5>
@@ -198,6 +202,13 @@
             </div>
         </div>
     </div>
+    <?php
+      if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']=="true" ){
+        echo "logged in";
+         echo '<div> <p> <h2>'.$_SESSION["username"].'</h2></p></div>';
+       }else echo 'not found';
+       
+    ?>
     <!-- Complaint Table -->
     <div class="col-12">
         <div class="container my-2 ">
@@ -247,15 +258,6 @@
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        $(window).on('scroll', function () {
-            if ($(window).scrollTop()) {
-                $('nav').addClass('black');
-            } else {
-                $('nav').removeClass('black');
-            }
-        })
-    </script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('input[type="radio"]').click(function () {
