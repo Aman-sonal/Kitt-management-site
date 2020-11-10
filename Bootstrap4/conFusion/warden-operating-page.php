@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +21,13 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
+    <?php
+        include "partials/_dbconnect.php";
+        include "partials/_header.php";    
+
+    ?>
+
+    <!-- <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
         <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar1">
                 <span class="navbar-toggler-icon"></span>
@@ -38,7 +48,7 @@
                 </span>
             </div>
         </div>
-    </nav>
+    </nav> -->
     
     <div class="warden-side-complaint-table">
         <table class="table table-responsive" id="myTable">
@@ -53,22 +63,32 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                  <th scope='row'> 1.</th>
-                  <td> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</td>
-                  <td> time </td>
-                  <td> s </td>
-                  <td>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalCenter">
-                        View 
-                    </button>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-primary">
-                        Completed
-                    </button>                
-                  </td>
-                </tr>
+                <?php
+                   $sql= "SELECT * FROM `complaint` WHERE `hostel` LIKE 'KP-2'";
+                    $result= mysqli_query($conn, $sql);
+
+                    while($row = mysqli_fetch_assoc($result))
+                    {
+                        echo '
+                            <tr>
+                    <th scope="row"> 1.</th>
+                    <td>'. $row["com_desc"] .' </td>
+                    <td> '. $row["com_timestamp"] .' </td>
+                    <td> '. $row["com_roomno"] .' </td>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalCenter">
+                            View 
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary">
+                            Completed
+                        </button>                
+                    </td>
+                    </tr>';
+                    }
+                
+                ?>
             </tbody>
           </table>
     </div>
