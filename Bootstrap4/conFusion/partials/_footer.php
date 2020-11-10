@@ -2,7 +2,7 @@
         <div class="container my-2">
             <div>
                 <div class="row ">
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-6">   
                         <h5>Links</h5>
                         <ul>
                             <li><a href="#" class="text-light">Home</a></li>
@@ -26,9 +26,9 @@
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-auto ">
-                        <p>© Copyright 2020 Aman Sonal</p>
+                        <p>© Copyright 2020 Aman Sonal and Rahul</p>
                     </div>
                 </div>
             </div>
         </div>
-    </footer>
+</footer>

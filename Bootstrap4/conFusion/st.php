@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -19,7 +19,8 @@
     <?php 
         include 'partials/_dbconnect.php';
         include 'partials/_header.php';
-   
+    ?>
+   <?php 
         if(isset($_GET['alert']))
          { if($_GET['alert']){
             echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
@@ -28,39 +29,9 @@
       <span aria-hidden='true'>×</span>
     </button>
   </div>";
-     }}
-     if(isset($_GET['register']) && $_GET['register']=='failed')
-         { 
-            echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-    <strong>Failed!</strong> Your issue could not be registered. Try again later.
-    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-      <span aria-hidden='true'>×</span>
-    </button>
-  </div>";
-     }
-    
-     $_userid = $_GET['userid'];
-     $sql= "SELECT * FROM `users` WHERE `user_id` = $_userid ";
-        $result= mysqli_query($conn, $sql);
-        while($row = mysqli_fetch_assoc($result))
-            {
-                $_name = $row['user_name'];
-               
-               // $catdesc= $row['cat_description'];
-            }
-
+          }}
       ?>
-    <!-- Jumbotron -->
-    <br><br><br><br><br><br>
-    <div class="container">
-    <div class="jumbotron">
-        <h1 class="display-4"> <strong>Hello, <?php echo $_name; ?>!</strong></h1>
-        <hr class="my-4">
-        <p class="lead">Please report your issues here, We will be happy to resolve it.</p>
-    </div>
-
-   
-    <div>
+    <div >
         <div class="container mr-auto d-block tbl ">
             <div class="card">
                 <h5 class="card-header text-center card-header bg-success">Grievances/ Request/ Enquiry/ FeedBack</h5>
@@ -68,7 +39,6 @@
                     <div class="card-text mr-auto d-block">
                         <?php
                         echo '<form action="partials/_handlecomplaint.php" method="POST">
-                        <input type="hidden" name="userid" value='.$_userid.' >
                             <div class="form-row">
                                 <div class="col-3">
                                     <label for="hostel">Hostel</label>
@@ -237,31 +207,29 @@
                     <thead>
                         <tr>
                             <th scope="col">S.No</th>
-                            <th scope="col">Date/Time</th>
                             <th scope="col">Description</th>
                             <th scope="col">Status</th>
                             <th scope="col">Time Slot</th>
-                            <th scope="col">Remarks</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php 
+                         <?php 
         
-                        $sql = "SELECT * FROM `complaint` WHERE `com_userid` = $_userid ";
+                        $sql = "SELECT * FROM `complaint`";
                         $result = mysqli_query($conn, $sql);
                         $sno = 0;
                         while($row = mysqli_fetch_assoc($result)){
                             $sno = $sno + 1;
                             echo "<tr>
                             <th scope='row' class='sorting_1' tabindex='0'>". $sno . "</th>
-                            <td>". $row['timestamp'] . "</td>
                             <td>". $row['com_desc'] . "</td>
                             <td>". $row['com_status'] . "</td>
                             <td>". $row['com_timeslot'] . "</td>
-                            <td>". $row['remark'] . "</td>
                         </tr>";
                         }  
-                        ?>
+                        ?> 
+
+
                     </tbody>
                 </table>
             </strong>
@@ -271,7 +239,7 @@
 
     <!-- FOOTER -->
     <?php include 'partials/_footer.php'; ?>
-
+    
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
     <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
@@ -280,32 +248,32 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script type="text/javascript">
-    $(window).on('scroll', function() {
-        if ($(window).scrollTop()) {
-            $('nav').addClass('black');
-        } else {
-            $('nav').removeClass('black');
-        }
-    })
+        $(window).on('scroll', function () {
+            if ($(window).scrollTop()) {
+                $('nav').addClass('black');
+            } else {
+                $('nav').removeClass('black');
+            }
+        })
     </script>
     <script type="text/javascript">
-    $(document).ready(function() {
-        $('input[type="radio"]').click(function() {
-            var inputValue = $(this).attr("value");
-            var targetBox = $("." + inputValue);
-            $(".box").not(targetBox).hide();
-            $(targetBox).show();
+        $(document).ready(function () {
+            $('input[type="radio"]').click(function () {
+                var inputValue = $(this).attr("value");
+                var targetBox = $("." + inputValue);
+                $(".box").not(targetBox).hide();
+                $(targetBox).show();
+            });
         });
-    });
     </script>
 
     <!-- data table -->
     <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script>
-    $(document).ready(function() {
-        $('#myTable').DataTable();
-        responsive: true
-    });
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+            responsive: true
+        });
     </script>
 
 </body>
