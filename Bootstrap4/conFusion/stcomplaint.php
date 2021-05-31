@@ -1,3 +1,12 @@
+<?php 
+session_start();
+    if(!isset($_SESSION['loggedin']) ||  $_SESSION['loggedin']!=true)
+    {
+        header("location : Mainpage.php");
+        exit;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +22,8 @@
     <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
     <link rel="stylesheet" href="mainpage.css">
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -21,18 +32,20 @@
         include 'partials/_header.php';
    
         if(isset($_GET['alert']))
-         { if($_GET['alert']){
-            echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-    <strong>Success!</strong> Your issue has been successfully registered. We will try to resolve it asap.
-    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-      <span aria-hidden='true'>×</span>
-    </button>
-  </div>";
-     }}
+         { 
+            if($_GET['alert']){
+                echo "<div class='alert alert-success alert-dismissible fade show mt-6 close ' role='alert'>
+                    <strong>Success!</strong> Your issue has been successfully registered. We will try to resolve it asap.
+                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                    <span aria-hidden='true'>×</span>
+                    </button>
+                </div>";
+            }
+         }
      if(isset($_GET['register']) && $_GET['register']=='failed')
          { 
-            echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-    <strong>Failed!</strong> Your issue could not be registered. Try again later.
+            echo "<div class='alert alert-danger alert-dismissible fade show close ' role='alert'>
+    <strong>Failed!</strong> Your issue could not be registered. Try again after some time.
     <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
       <span aria-hidden='true'>×</span>
     </button>
@@ -166,7 +179,7 @@
                                         <input type="radio"  class="form-control" name="tinterval" value="5 p.m. - 6 p.m." required>
                                     </div>
                                 </div>
-                                <center><button type="submit" class="btn btn-success my-2">Submit</button></center>
+                                <center><button type="submit" class="btn btn-success my-2" onclick="closeAlert()">Submit</button></center>
                                 
                         </div>
                         <div class="feedback box">
@@ -174,7 +187,7 @@
                                 <tbody>
                                   <tr>
                                     <th scope="row">Warden\'s Name</th>
-                                    <td> Jo b Naam Hoga</td>
+                                    <td>Wardens Name</td>
                                   </tr>
                                   <tr>
                                     <th scope="row">Mess Incharge</th>
@@ -220,7 +233,6 @@
                             </div>
                             <button type="submit" class="btn btn-success">Submit</button>
                         </div>
-                        
                         </form>';
                         ?>
                     </div>
@@ -229,6 +241,9 @@
         </div>
     </div>
     <!-- Complaint Table -->
+
+
+
     <div class="col-12">
         <div class="container my-2 ">
 
@@ -247,7 +262,7 @@
                     <tbody>
                         <?php 
         
-                        $sql = "SELECT * FROM `complaint` WHERE `com_userid` = $_userid ";
+                        $sql = "SELECT * FROM `complaint` WHERE `user_id` = $_userid";
                         $result = mysqli_query($conn, $sql);
                         $sno = 0;
                         while($row = mysqli_fetch_assoc($result)){
@@ -258,7 +273,6 @@
                             <td>". $row['com_desc'] . "</td>
                             <td>". $row['com_status'] . "</td>
                             <td>". $row['com_timeslot'] . "</td>
-                            <td>". $row['remark'] . "</td>
                         </tr>";
                         }  
                         ?>
@@ -279,7 +293,7 @@
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
     $(window).on('scroll', function() {
         if ($(window).scrollTop()) {
             $('nav').addClass('black');
@@ -287,7 +301,7 @@
             $('nav').removeClass('black');
         }
     })
-    </script>
+    </script> -->
     <script type="text/javascript">
     $(document).ready(function() {
         $('input[type="radio"]').click(function() {
@@ -297,8 +311,18 @@
             $(targetBox).show();
         });
     });
+    function closeAlert()
+    {
+        var close = document.getElementsByClassName('close');
+        close.innerHTML= `<strong>Success!</strong> Your issue has been successfully registered. We will try to resolve it asap.
+    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+      <span aria-hidden='true'>×</span>
+    </button>`;
+        setTimeout(function(){
+        close.parentNode.removeChild(el);
+        },duration);
+    }
     </script>
-
     <!-- data table -->
     <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script>

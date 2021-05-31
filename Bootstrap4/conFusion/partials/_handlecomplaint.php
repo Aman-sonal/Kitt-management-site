@@ -11,8 +11,8 @@
         $userid = $_POST['userid'];
 
         // Sql query to be executed
-        $sql = "INSERT INTO `complaint` (`com_d`, `com_desc`, `com_phn`, `com_timeslot`, `com_Mtype`, `com_roomno`, `com_status`, `com_userid`, `timestamp`, `hostel`) 
-                VALUES (NULL, '$description', '$phn', '$time', '$mtype', '$room', 'pending', '$userid', current_timestamp(), '$hostel');";
+        $sql = "INSERT INTO `complaint` (`com_desc`, `com_status`, `timestamp`, `com_phone`, `com_roomno`, `com_timeslot`, `hostel`, `user_id`) 
+                VALUES ('$description', 0 , current_timestamp(), '$phn', '$room', , '$time' , '$hostel', '$userid');";
         $result = mysqli_query($conn, $sql);
 
         

@@ -12,10 +12,11 @@
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
     <link rel="stylesheet" href="mainpage.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <!-- <?php include 'partials/_header.php'; ?> -->
+    <?php include 'partials/_header.php'; ?>
     <div class="modal fade" id="signupModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -53,36 +54,7 @@
     </div>
 </div>
 
-    <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar1">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand mr-auto" href="./Mainpage.html"> <img src="LunaPic-Edit-7.PNG" class="img-fluid mr-5"
-                    width="90" height="auto"></a>
-            <div class="collapse navbar-collapse" id="Navbar1">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active"><a class="nav-link" href="#"><span class="fa fa-home fa-lg mr-1"></span>
-                            <b>Home</b></a></li>
-                    <li class="nav-item"><a class="nav-link" href="./aboutus.html"><span
-                                class="fa fa-info fa-lg mr-1"></span><b>About Us</b></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><span
-                                class="fa fa-address-card fa-lg mr-1"></span><b>Contact</b></a></li>
-                </ul>
-                <span class="navbar-text">
-                    <a class="btn btn-social-icon btn-google" href="http://google.com/+"><i
-                            class="fa fa-google-plus"></i></a>
-                    <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i
-                            class="fa fa-facebook"></i></a>
-                    <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i
-                            class="fa fa-linkedin"></i></a>
-                    <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i
-                            class="fa fa-twitter"></i></a>
-                    <a class="btn btn-social-icon" href="mailto:"><i class="fa fa-envelope-o"></i></a>
-                </span>
-            </div>
-        </div>
-    </nav>
+    
 
     <div class="bg-image">
         <div class="text-center">
@@ -124,14 +96,22 @@
                             <input type="password" class="form-control" id="inputPassword3" name="password" placeholder="Password">
                         </div>
                     </div>
-                    <small id="emailHelp" class="form-text ">New here?<a  href="#signupModal" data-toggle="modal" > Create an account</a></small>
+                    <div class="d-flex flex-row justify-content-around">
+                        <small id="emailHelp" class="form-text ">New here?<a  href="#signupModal" data-toggle="modal" > Create an account</a></small>
+                        <div class="form-check ">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                            <label class="form-check-label" for="flexCheckChecked">
+                                Remember Me
+                            </label>
+                        </div>
+                    </div>
                     <div class="row justify-content-center mt-5">
                         <div class="col-4 mx-5 order-2 order-md-1">
                             <button class="btn btn-danger btnn" id="btn-1" href="#" role="button">forgot
                                 password</button>
                         </div>
                         <div class="col-4 mx-5 order-1 order-md-2">
-                            <button class="btn btn-primary ml-5 btn-lg" id="btn-2" 
+                            <button class="btn btn-primary ml-5 btn-lg" id="btn-2"  
                                 role="button">login</button>
                         </div>
                     </div>
@@ -151,15 +131,6 @@
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-    $(window).on('scroll', function() {
-        if ($(window).scrollTop()) {
-            $('nav').addClass('black');
-        } else {
-            $('nav').removeClass('black');
-        }
-    })
-    </script>
 </body>
 
 

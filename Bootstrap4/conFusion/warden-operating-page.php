@@ -18,7 +18,7 @@
             $showError = true;
         }
         
-    }
+    }   
     $_userid = $_GET['userid'];
     $sql= "SELECT * FROM `users` WHERE `user_id` = $_userid ";
         $result= mysqli_query($conn, $sql);
@@ -60,7 +60,6 @@
     <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
     <link rel="stylesheet" href="mainpage.css">
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
-
 </head>
 
 <body>

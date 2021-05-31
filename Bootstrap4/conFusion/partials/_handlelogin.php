@@ -5,6 +5,14 @@
         $mail = $_POST['usermail'];
         $pass = $_POST['password'];
 
+        if(empty($mail) || empty($pass))
+        {
+                $msg= "<div class='alert alert-danger' role='alert'>
+                     Both the Fields are required !
+              </div>";
+              echo $msg;
+        }
+       else{
         $sql = "SELECT * FROM `users` WHERE `user_mail` = '$mail'";
         $result = mysqli_query($conn, $sql);
         $num = mysqli_num_rows($result);
@@ -12,6 +20,7 @@
             while($row = mysqli_fetch_assoc($result)){
                
                 if(password_verify($pass, $row['password'])){
+                    // setcookie("type" , $row['usermail'], time()+ 3600);
                     session_start();
                     $login = true;
                     $_SESSION['loggedin']=true;
@@ -37,6 +46,7 @@
         else{
             $showError = "User Does not exist.";
         }
+       }
        header("Location: /khms/Kitt-management-site/Bootstrap4/conFusion/mainpage.php?loginsuccess=false&error=$showError");
 }
 

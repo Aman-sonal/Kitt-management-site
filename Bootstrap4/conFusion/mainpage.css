@@ -1,3 +1,6 @@
+body{
+    font-family: 'Roboto', sans-serif;
+}
 .bg-image{
     background-image: url(KIIT-Campus.jpg);
     -webkit-backdrop-size:cover;

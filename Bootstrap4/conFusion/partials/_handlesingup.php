@@ -23,7 +23,6 @@
                 {   $hash = password_hash($password, PASSWORD_DEFAULT);
                   $sql = "INSERT INTO `users` (`user_id`, `user_name`, `user_mail`, `password`) VALUES (NULL, '$username', '$useremail', '$hash')";
                   $result = mysqli_query($conn, $sql);
-                echo "aaaaaa";
                 if($result){
                     $showAlert = true;
                    header("Location: /khms/Kitt-management-site/Bootstrap4/conFusion/mainpage.php?signupsuccess=true");
