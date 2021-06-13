@@ -24,6 +24,7 @@ session_start();
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
 
 <body>
@@ -34,253 +35,310 @@ session_start();
         if(isset($_GET['alert']))
          { 
             if($_GET['alert']){
-                echo "<div class='alert alert-success alert-dismissible fade show mt-6 close ' role='alert'>
-                    <strong>Success!</strong> Your issue has been successfully registered. We will try to resolve it asap.
-                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                    <span aria-hidden='true'>×</span>
-                    </button>
-                </div>";
+                echo '
+                <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                </symbol> </svg>
+                <div class="alert alert-success  alert-dismissible d-flex align-items-center" role="alert" id="success-alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                <div>
+                  Added Successfully.
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>';
             }
          }
      if(isset($_GET['register']) && $_GET['register']=='failed')
          { 
-            echo "<div class='alert alert-danger alert-dismissible fade show close ' role='alert'>
-    <strong>Failed!</strong> Your issue could not be registered. Try again after some time.
-    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-      <span aria-hidden='true'>×</span>
-    </button>
-  </div>";
+            echo'
+            <svg>
+            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+          </symbol>
+            </svg> 
+            <div class="alert alert-danger alert-dismissible d-flex align-items-center" role="alert" id="error-alert>
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+            <div>
+              An example danger alert with an icon
+            </div>';
      }
     
      $_userid = $_GET['userid'];
-     $sql= "SELECT * FROM `users` WHERE `user_id` = $_userid ";
+     $sql= "SELECT * FROM `users` WHERE `user_id` = {$_userid} ";
         $result= mysqli_query($conn, $sql);
         while($row = mysqli_fetch_assoc($result))
-            {
-                $_name = $row['user_name'];
-               
-               // $catdesc= $row['cat_description'];
-            }
-
+        {
+            $_name = $row['user_name'];
+        }
       ?>
     <!-- Jumbotron -->
     <br><br><br><br><br><br>
-    <div class="container">
-    <div class="jumbotron">
-        <h1 class="display-4"> <strong>Hello, <?php echo $_name; ?>!</strong></h1>
-        <hr class="my-4">
-        <p class="lead">Please report your issues here, We will be happy to resolve it.</p>
-    </div>
-
-   
-    <div>
-        <div class="container mr-auto d-block tbl ">
-            <div class="card">
-                <h5 class="card-header text-center card-header bg-success">Grievances/ Request/ Enquiry/ FeedBack</h5>
-                <div class="card-body">
-                    <div class="card-text mr-auto d-block">
-                        <?php
-                        echo '<form action="partials/_handlecomplaint.php" method="POST">
-                        <input type="hidden" name="userid" value='.$_userid.' >
-                            <div class="form-row">
-                                <div class="col-3">
-                                    <label for="hostel">Hostel</label>
-                                </div>
-                                    <div class="form-group col-auto">
-                                        <select id="hostel" name="hostel" class="form-control">
-                                          <option selected >  K.P-1  </option>
-                                          <option > K.P-2 </option>
-                                          <option >K.P-3</option>
-                                          <option >K.P-4</option>
-                                         
-                                        </select>
-                                      </div>
-                                </div>
-                            </div>
-                            <div class="form-row my-3">
-                                    <div class="col-6 col-md-3">
-                                        <label for="Maintainence"> Maintainence/Electical</label>
-                                    </div>
-                                    <div class="col-6 col-md-1">
-                                        <input type="radio" class="form-control" name="selectt"  value="maintain">
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <label for="feedback"> FeedBack</label>
-                                    </div>
-                                    <div class="col-6 col-md-1">
-                                        <input type="radio" class="form-control" name="selectt" value="feedback">
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <label for="feedback">Other</label>
-                                    </div>
-                                    <div class="col-6 col-md-1">
-                                        <input type="radio" class="form-control" name="selectt" value="other">
-                                    </div>
-                                    
-                            </div>
-                        
-                        
-                        <div class="maintain box">
-                            
-                                <div class="form-row">
-                                    <div class="col-4 col-md-3">
-                                        <label for="Maintainence">Room Cleaniness</label>
-                                    </div>
-                                    <div class="col-2 col-md-1">
-                                        <input type="radio" class="form-control"  name="selectM"  value="Room-Cleaniness"> 
-                                    </div>
-                                    <div class="col-4 col-md-1">
-                                        <label for="Other">Others</label> 
-                                    </div>
-                                    <div class="col-2 col-md-1">
-                                        <input type="radio" class="form-control" name="selectM" value="Others-outside-problems">
-                                    </div>
-                                    <div class="col-4 col-md-3">
-                                        <label for="feedback">Electrical Appliances</label>
-                                    </div>
-                                    <div class="col-auto col-md-1">
-                                        <input type="radio" class="form-control" name="selectM" value="Electrical-appliances">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="col-6 col-md-3">
-                                        Contact Number :   * 
-                                    </div>
-                                    <div class="col-6 col-md-5">
-                                        <input type="telnum" class="form-control" name="phone" placeholder="Whatsapp Number" required>
-                                    </div>
-                                </div>
-                                <div class="form-row my-2">
-                                <div class="col-6 col-md-3 ">
-                                    Room Number :   * 
-                                </div>
-                                <div class="col-6 col-md-5 ">
-                                    <input type="text" class="form-control" name="room" placeholder="Room Number" required>
-                                </div>
-                            </div>
-                                <div class="form-row my-2">
-                                    <div class="col-6 col-md-3">
-                                        Description :  * 
-                                    </div>
-                                <div class="form-group ">
-                                         <textarea class="form-control" id="Description" name="Description" rows="3"></textarea>
-                                </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="col-6 col-md-3">
-                                        Set Time Interval: * 
-                                    </div>
-                                    <div class="col-6 col-md-5 ">
-                                        <label for="time-interval"><strong>11a.m. - 12 p.m.</strong></label>
-                                        <input type="radio"  class="form-control" name="tinterval" value="11a.m. - 12 p.m." required>
-                                        <label for="time-interval"><strong>2 p.m. - 3 p.m.</strong></label>
-                                        <input type="radio"  class="form-control" name="tinterval" value="2 p.m. - 3 p.m." required>
-                                        <label for="time-interval"><strong>5 p.m. - 6 p.m.</strong></label>
-                                        <input type="radio"  class="form-control" name="tinterval" value="5 p.m. - 6 p.m." required>
-                                    </div>
-                                </div>
-                                <center><button type="submit" class="btn btn-success my-2" onclick="closeAlert()">Submit</button></center>
-                                
+<div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4"> <strong>Hello, <?php echo $_name; ?>!</strong></h1>
+            <hr class="my-4">
+            <p class="lead">Please report your issues here, We will be happy to resolve it.</p> 
+        </div>
+    <div class="container justify-content-between mx-auto mt-6">
+        <div class="card text-center">
+            <div class="card-header  text-center card-header bg-success">
+                Grievances/ Request/ Enquiry/ FeedBack
+            </div>
+            <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active"  id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Maintenance</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Valuable Information</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">
+                    Feedback</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                <?php
+                    echo '<form action="partials/_handlecomplaint.php" method="POST">
+                        <input type="hidden" name="userid" value='.$_userid.'>
+                        <input type="hidden" name="hostel" value="kp-6" >
+                        <div class=" flex d-flex mx-auto mb-3 justify-content-around">
+                        <div class="form-check mx-4">
+                            <input class="form-check-input" type="radio" name="roomCleaniness" value="room-cleaniness" id="flexRadioDefault2" checked>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Room Cleaniness
+                            </label>
                         </div>
-                        <div class="feedback box">
-                            <table class="table table-hover table-stripped  table-responsive">
-                                <tbody>
-                                  <tr>
-                                    <th scope="row">Warden\'s Name</th>
-                                    <td>Wardens Name</td>
-                                  </tr>
-                                  <tr>
-                                    <th scope="row">Mess Incharge</th>
-                                    <td>12w12324</td>
-                                  </tr>
-                                  <tr>
-                                    <div class="row row-content">
-                                        <div class="col-4">
-                                        <th scope="row">How\'s the mess Food</th>
+                        <div class="form-check mx-4">
+                            <input class="form-check-input" type="radio" name="roomCleaniness" value="Electical-cleaniness" id="flexRadioDefault2" checked>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Electical appliances
+                            </label>
+                        </div>
+                        <div class="form-check mx-4">
+                            <input class="form-check-input" type="radio" name="roomCleaniness" value="Others-cleaniness" id="flexRadioDefault2" checked>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Others
+                            </label>
+                        </div>
+                        </div>
+                        <div class="row mb-3">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Contact Number</label>
+                                <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputEmail3" name="phoneNumber" placeholder="Calling Number">
+                                </div>
+                         </div>
+                         <div class="row mb-3">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Room Number</label>
+                                <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputEmail3" name="roomNumber">
+                                </div>
+                         </div>
+                         <div class="row mb-3">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Set Interval</label>
+                                <div class="col-sm-10 flex d-flex">
+                                <div class="form-check mx-4">
+                                    <input class="form-check-input" type="radio" name="setInterval" value="11 am to 12 pm" id="flexRadioDefault2" checked>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        11 A.M to 12 P.M
+                                    </label>
+                                </div>
+                                <div class="form-check mx-4">
+                                    <input class="form-check-input" type="radio" name="setInterval" id="flexRadioDefault2" value="3 am to 5 pm" checked>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        3 P.M to 5 P.M
+                                    </label>
+                                </div>
+                                <div class="form-check mx-4">
+                                    <input class="form-check-input" type="radio" name="setInterval" value="6 am to 7 pm" id="flexRadioDefault2" checked>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        6 P.M to 7 P.M
+                                    </label>
+                                </div>
+                                </div>
+                         </div>
+                        <div class="row mb-3">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Describe: </label>
+                            <div class="col-sm-10 offset-sm-2">
+                                <div class="form-group">
+                                    <textarea class="form-control" id="Description" name="Description" rows="2" placeholder="Specify your  complaint in not more than 100 words"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                    </form>'?>
+                </div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                        <td>Hostel</td>
+                        <td>kp-6</td>
+                        </tr>
+                        <tr>
+                            <td>Hostel Phone Number</td>
+                            <td> 
+                                000000000
+                            </td>
+                            </tr>
+                        <tr>
+                        
+                        <td>Warden Name</td>
+                        <td>XYZ</td>
+                        </tr>
+                        <tr>
+                    
+                            <td >Mess Incharge</td>
+                            <td>ABC</td>
+                        </tr>
+                        <tr>
+                            <td>Hostel Rules and Reguldation</td>
+                            <td>
+                            <a class="btn btn-primary" href="#" role="button">Download</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                <?php  echo' <form action="" method="POST">
+                                <div class="row mb-3">
+                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Room Cleaniness Rating</label>
+                                        <div class="col-sm-10">
+                                        <div class="flex d-flex mx-auto justify-content-around">
+                                            <div class="form-check mx-4">
+                                                <input class="form-check-input" type="radio" name="roomCleaninessRating" id="flexRadioDefault2" checked>
+                                                <label class="form-check-label" for="flexRadioDefault2">
+                                                Daily
+                                                </label>
+                                </div>
+                                <div class="form-check mx-4">
+                                                <input class="form-check-input" type="radio" name="roomCleaninessRating" id="flexRadioDefault2" checked>
+                                                <label class="form-check-label" for="flexRadioDefault2">
+                                                    Once in Week
+                                                </label>
+                                </div>
+                                <div class="form-check mx-4">
+                                                <input class="form-check-input" type="radio" name="roomCleaninessRating" id="flexRadioDefault2" checked>
+                                                <label class="form-check-label" for="flexRadioDefault2">
+                                                    Once in Month
+                                                </label>
+                                </div>
                                         </div>
-                                        <td>
-                                            <div class="col-4">
-                                                <label for="messsurvey">Average</label>
-                                                <input type="radio" name="mess-survey">
-                                            </div>
-                                            <div class="col-4">
-                                                <label for="messsurvey">Below Average</label>
-                                                <input type="radio" name="mess-survey">
-                                            </div>
-                                        </td>
                                     </div>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                        <h4>We Would Love to improve ourself at any cost to provide you the best services</h4>
-                                    </td>
-                                    <td>
-                                        <input type="text" row="6" name="feedbacktowardsMess">
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                              <button type="submit" class="btn btn-success">Submit</button>
-                        </div>
-                        <div class="other box">
-                            <div class="row row-content">
-                                <div class="col-12 col-md-6">
-                                    <h5>We Would like to maintain discipline of our hostel and help erevyone towards achieving their goals</h5>
                                 </div>
-                                <div class="col-12 col-md-6">
-                                    <input type="text" rows="12"  cols="50" value="maintain-discipline" name="cyz">
+                                <div class="row mb-3">
+                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Hostel Cleaniness Rating</label>
+                                        <div class="col-sm-10">
+                                        <div class="flex d-flex mx-auto justify-content-around">
+                                            <div class="form-check mx-4">
+                                                <input class="form-check-input" type="radio" name="hostelCleaninessRating" id="flexRadioDefault2" checked>
+                                                <label class="form-check-label" for="flexRadioDefault2">
+                                                Good 
+                                                </label>
+                                            </div>
+                                            <div class="form-check mx-4">
+                                                <input class="form-check-input" type="radio" name="hostelCleaninessRating" id="flexRadioDefault2" checked>
+                                                <label class="form-check-label" for="flexRadioDefault2">
+                                                    Average
+                                                </label>
+                                            </div>
+                                            <div class="form-check mx-4">
+                                                <input class="form-check-input" type="radio" name="hostelCleaninessRating" id="flexRadioDefault2" checked>
+                                                <label class="form-check-label" for="flexRadioDefault2">
+                                                    Below Average
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <button type="submit" class="btn btn-success">Submit</button>
-                        </div>
-                        </form>';
-                        ?>
-                    </div>
+                                <div class="row mb-3">
+                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Mess Food Rating</label>
+                                        <div class="col-sm-10">
+                                        <div class="flex d-flex mx-auto justify-content-around">
+                                            <div class="form-check mx-4">
+                                                <input class="form-check-input" type="radio" name="messFoodRating" id="flexRadioDefault2" checked>
+                                                <label class="form-check-label" for="flexRadioDefault2">
+                                                Good 
+                                                </label>
+                                            </div>
+                                            <div class="form-check mx-4">
+                                                <input class="form-check-input" type="radio" name="messFoodRating" id="flexRadioDefault2" checked>
+                                                <label class="form-check-label" for="flexRadioDefault2">
+                                                    Average
+                                                </label>
+                                            </div>
+                                            <div class="form-check mx-4">
+                                                <input class="form-check-input" type="radio" name="messFoodRating" id="flexRadioDefault2" checked>
+                                                <label class="form-check-label" for="flexRadioDefault2">
+                                                    Below Average
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 ml-2">
+                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Your Monthly Feedback for your hostel</label>
+                                        <div class="col-sm-10">
+                                        <div class="form-group">
+                                    <textarea class="form-control" id="Description" name="feedbackDescription" rows="2" placeholder="Not more than 100 words"></textarea>
+                                        </div>
+                                        </div>
+                                </div>
+                                <div class="row mb-3 ml-2">
+                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Any Suggesstion Warden</label>
+                                        <div class="col-sm-10">
+                                        <div class="form-group">
+                                    <textarea class="form-control" id="Description" name="wardenFeedback" rows="2" placeholder="Not more than 100 words"></textarea>
+                                        </div>
+                                        </div>
+                                </div>
+                                </form>                 
+                        <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                    </form>'?>;
                 </div>
             </div>
         </div>
     </div>
+</div>
     <!-- Complaint Table -->
-
-
-
-    <div class="col-12">
-        <div class="container my-2 ">
-
-            <strong>
-                <table class="table" id="myTable">
-                    <thead>
-                        <tr>
-                            <th scope="col">S.No</th>
-                            <th scope="col">Date/Time</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Time Slot</th>
-                            <th scope="col">Remarks</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php 
-        
-                        $sql = "SELECT * FROM `complaint` WHERE `user_id` = $_userid";
-                        $result = mysqli_query($conn, $sql);
-                        $sno = 0;
-                        while($row = mysqli_fetch_assoc($result)){
-                            $sno = $sno + 1;
-                            echo "<tr>
-                            <th scope='row' class='sorting_1' tabindex='0'>". $sno . "</th>
-                            <td>". $row['timestamp'] . "</td>
-                            <td>". $row['com_desc'] . "</td>
-                            <td>". $row['com_status'] . "</td>
-                            <td>". $row['com_timeslot'] . "</td>
-                        </tr>";
-                        }  
-                        ?>
-                    </tbody>
-                </table>
-            </strong>
-        </div>
-    </div>
+         <div class="container mx-auto">
+            <table class="table table-success table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">S.No</th>
+                        <th scope="col">Date/Time</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Time Slot</th>
+                        <th scope="col">Remarks</th>
+                    </tr>
+                </thead>
+            <tbody>
+                <?php 
+                
+                $sql = "SELECT * FROM `complaint` WHERE `user_id` = $_userid";
+                $result = mysqli_query($conn, $sql);
+                $sno = 0;
+                while($row = mysqli_fetch_assoc($result)){
+                    $sno = $sno + 1;
+                    $remark;
+                    if($row['com_status']==0) $remark="Not Completed";
+                    else $remark="Completed";
+                    echo "<tr>
+                    <th scope='row' class='sorting_1' tabindex='0'>". $sno . "</th>
+                    <td>". $row['timestamp'] . "</td>
+                    <td>". $row['com_desc'] . "</td>
+                    <td>". $row['com_status'] . "</td>
+                    <td>". $row['com_timeslot'] . "</td>
+                    <td>". $remark . "</td>
+                </tr>";
+                }  
+                ?>
+            </tbody>
+            </table>
+         </div>
 
 
     <!-- FOOTER -->
@@ -291,36 +349,30 @@ session_start();
     <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <!-- <script type="text/javascript">
-    $(window).on('scroll', function() {
-        if ($(window).scrollTop()) {
-            $('nav').addClass('black');
-        } else {
-            $('nav').removeClass('black');
-        }
-    })
     </script> -->
     <script type="text/javascript">
-    $(document).ready(function() {
-        $('input[type="radio"]').click(function() {
-            var inputValue = $(this).attr("value");
-            var targetBox = $("." + inputValue);
-            $(".box").not(targetBox).hide();
-            $(targetBox).show();
-        });
-    });
-    function closeAlert()
-    {
-        var close = document.getElementsByClassName('close');
-        close.innerHTML= `<strong>Success!</strong> Your issue has been successfully registered. We will try to resolve it asap.
-    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-      <span aria-hidden='true'>×</span>
-    </button>`;
-        setTimeout(function(){
-        close.parentNode.removeChild(el);
-        },duration);
+    // $(document).ready(function() {
+    //     $('input[type="radio"]').click(function() {
+    //         var inputValue = $(this).attr("value");
+    //         var targetBox = $("." + inputValue);
+    //         $(".box").not(targetBox).hide();
+    //         $(targetBox).show();
+    //     });
+    // });/
+    const alertMsg = document.querySelector("#success-alert");
+    if (alertMsg) {
+    setTimeout(() => {
+        alertMsg.remove();
+    }, 2000);
+    }
+    const alertMsg = document.querySelector("#error-alert");
+    if (alertMsg) {
+    setTimeout(() => {
+        alertMsg.remove();
+    }, 5000);
     }
     </script>
     <!-- data table -->
@@ -333,6 +385,12 @@ session_start();
     </script>
 
 </body>
-
-
 </html>
+
+
+
+
+
+
+
+
