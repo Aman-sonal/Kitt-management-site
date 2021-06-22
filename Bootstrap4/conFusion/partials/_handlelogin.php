@@ -2,18 +2,17 @@
     if($_SERVER["REQUEST_METHOD"]=="POST"){
         
         include '_dbconnect.php';
-        $mail = $_POST['usermail'];
+        $mail = $_POST['Email'];
         $pass = $_POST['password'];
-
+        $empty=false;
         if(empty($mail) || empty($pass))
         {
-                $msg= "<div class='alert alert-danger' role='alert'>
-                     Both the Fields are required !
-              </div>";
-              echo $msg;
+            $empty=true;
+            header("Location: /khms/Kitt-management-site/Bootstrap4/conFusion/mainPage/Mainpage.php?emptyField=$empty");
+            exit();
         }
        else{
-        $sql = "SELECT * FROM `users` WHERE `user_mail` = '$mail'";
+        $sql = "SELECT * FROM `users` WHERE `user_mail` = '$mail' AND `status`='active'";
         $result = mysqli_query($conn, $sql);
         $num = mysqli_num_rows($result);
         if($num == 1){

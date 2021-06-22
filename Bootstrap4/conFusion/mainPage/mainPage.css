@@ -1,0 +1,15 @@
+body{
+    background-image: url("https://i.pinimg.com/originals/22/14/c2/2214c259daf597bc38a907d4796027c7.jpg");
+    background-size: cover;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    font-family: 'Open Sans', sans-serif;
+}
+.login-form{
+    margin-top:17%;
+    width:600px;
+}
+.login-button:hover{
+    background: #e6ffee;
+    transition: all .3s ease-in-out;
+}

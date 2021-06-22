@@ -45,7 +45,7 @@
                     <a class="nav-link" href="#"><span class="fa fa-address-card fa-lg mr-2"></span>Contact</a>
             </li>
           </ul>
-          <a class="btn btn-outline-success mx-2" href="Mainpage.php" role="button">Sign Out <span><i class="fa fa-sign-out mx-1" aria-hidden="true"></i></span></a>
+          <a class="btn btn-outline-success mx-2" href="mainPage/Mainpage.php" role="button">Sign Out <span><i class="fa fa-sign-out mx-1" aria-hidden="true"></i></span></a>
         </div>
       </div>
     </nav> ';
