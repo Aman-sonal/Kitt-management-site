@@ -72,7 +72,7 @@
             </div>
         </div>
         <div class="row mb-3">
-            <div><a href="_forgotPassword.php">Forgot Password? </a></div>
+            <div><a href="../partials/_forgotPassword.php">Forgot Password? </a></div>
             <div class="col-sm-10 offset-sm-2">
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" id="gridCheck1">

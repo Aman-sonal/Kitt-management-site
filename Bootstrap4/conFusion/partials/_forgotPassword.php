@@ -60,7 +60,7 @@
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                 <div class="col-auto m-3">
                     <label for="inputPassword2" class="visually-hidden"></label>
-                    <input type="email" class="form-control" id="inputPassword2" placeholder="Email">
+                    <input type="email" name="email" class="form-control" id="inputPassword2" placeholder="Email">
                     <div>
                         <p><?php 
                             if(isset($_SESSION['forgot']))
