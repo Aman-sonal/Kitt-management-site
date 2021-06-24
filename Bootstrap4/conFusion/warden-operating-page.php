@@ -1,6 +1,5 @@
-<<<<<<< HEAD
-=======
-<?php 
+
+<!-- <?php 
     include "partials/_dbconnect.php";
     $showAlert = false;
     $showError = false;
@@ -17,7 +16,7 @@
         }else{
             $showError = true;
         }
-        
+           
     }   
     $_userid = $_GET['userid'];
     $sql= "SELECT * FROM `users` WHERE `user_id` = $_userid ";
@@ -38,13 +37,8 @@
             $showAlert=true;
         }
       }
+?> -->
 
-
-?>
-
-
-
->>>>>>> 15d6aa500ac555fc929f872fdc0aacbb343c9196
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,88 +54,16 @@
     <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
     <link rel="stylesheet" href="mainpage.css">
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
 
 <body>
     <?php
-       // include "partials/_dbconnect.php";
-        // include "partials/_header.php";    
-
+       include "partials/_dbconnect.php";
+       include "partials/_header.php";    
     ?>
-
-    <!-- <nav class="navbar navbar-dark navbar-expand-sm  fixed-top">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar1">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand mr-auto" href="./Mainpage.html"> <img src="LunaPic-Edit-7.PNG" class="img-fluid mr-5" width="50" height="auto"></a>
-            <div class="collapse navbar-collapse" id="Navbar1">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active"><a class="nav-link" href="#"><span class="fa fa-home fa-lg mr-1"></span> <b>Home</b></a></li>
-                    <li class="nav-item"><a class="nav-link" href="./aboutus.html"><span class="fa fa-info fa-lg mr-1"></span><b>About Us</b></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><span class="fa fa-address-card fa-lg mr-1"></span><b>Contact</b></a></li>
-                </ul>
-                <span class="navbar-text">
-                    <a class="btn btn-social-icon btn-google" href="http://google.com/+"><i class="fa fa-google-plus"></i></a>
-                    <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
-                    <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a>
-                    <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter"></i></a>
-                    <a class="btn btn-social-icon" href="mailto:"><i class="fa fa-envelope-o"></i></a>
-                </span>
-            </div>
-        </div>
-    </nav> -->
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed ">
-        <a class="navbar-brand mr-auto" href="./Mainpage.html"> <img src="LunaPic-Edit-7.PNG" class="img-fluid mr-5"
-                width="50" height="auto"></a>
-        <div class="collapse navbar-collapse" id="Navbar1">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li>
-                        <span class="navbar-text">
-                            <a class="btn btn-social-icon btn-google" href="http://google.com/+"><i
-                                    class="fa fa-google-plus"></i></a>
-                            <a class="btn btn-social-icon btn-facebook"
-                                href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
-                            <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i
-                                    class="fa fa-linkedin"></i></a>
-                            <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i
-                                    class="fa fa-twitter"></i></a>
-                            <a class="btn btn-social-icon" href="mailto:"><i class="fa fa-envelope-o"></i></a>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-    </nav>
-    <?php
-              if($showAlert)
-                {  echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-          <strong>Success!</strong>";if($WorkDone){ echo " Status has been successfully changed to completed.";}else {echo " Remark has been successfully updated."; }
-              echo"
-          <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-          <span aria-hidden='true'>×</span>
-          </button>
-      </div>";}
-      if($showError)
-      {  echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-<strong>Success!</strong> Remark updation failed. Please try few moments later.
-<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-<span aria-hidden='true'>×</span>
-</button>
-</div>";}
-        ?>
 
      
     <div class="container my-3">
@@ -152,48 +74,48 @@
         </div>
     </div>
      
-        <div class="warden-side-complaint-table my-5 ">
-            <table class="table table-responsive" id="myTable">
-                <thead>
-                    <tr>
-                        <th scope="col">S.No</th>
-                        <th scope="col">Student's Complain</th>
-                        <th scope="col">Time Slot</th>
-                        <th scope="col">Room Number</th>
-                        <th scope="col">Remarks</th>
-                        <th scope="col">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                   $sql= "SELECT * FROM `complaint` WHERE `com_status` LIKE 'pending' AND `hostel` LIKE '$_name' ";
-                    $result= mysqli_query($conn, $sql);
-                    $sl = 0;
-                    while($row = mysqli_fetch_assoc($result))
-                    {   $sl = $sl + 1;
-                        echo '
-                            <tr>
-                    <th scope="row">'.$sl.'</th>
-                    <td>'. $row["com_desc"] .' </td>
-                    <td> '. $row["com_timeslot"] .' </td>
-                    <td> '. $row["com_roomno"] .' </td>
-                    <td>
-                        <button type="button" class="remark btn btn-primary" data-toggle="modal" id='.$row["com_id"].' data-target="#ModalCenter">
-                           Edit
-                        </button>
-                    </td>
-                    <td>
-                        <button type=" button" class=" complete btn btn-primary" id='.$row["com_id"].'>
-                            Completed
-                        </button>                
-                    </td>
-                    </tr>';
-                    }
-                
-                ?>
-                </tbody>
-            </table>
-        </div>
+    <div class="warden-side-complaint-table my-5 ">
+        <table class="table table-responsive" id="myTable">
+            <thead>
+                <tr>
+                    <th scope="col">S.No</th>
+                    <th scope="col">Student's Complain</th>
+                    <th scope="col">Time Slot</th>
+                    <th scope="col">Room Number</th>
+                    <th scope="col">Remarks</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $sql= "SELECT * FROM `complaint` WHERE `com_status` LIKE 'pending' AND `hostel` LIKE '$_name' ";
+                $result= mysqli_query($conn, $sql);
+                $sl = 0;
+                while($row = mysqli_fetch_assoc($result))
+                {   $sl = $sl + 1;
+                    echo '
+                        <tr>
+                <th scope="row">'.$sl.'</th>
+                <td>'. $row["com_desc"] .' </td>
+                <td> '. $row["com_timeslot"] .' </td>
+                <td> '. $row["com_roomno"] .' </td>
+                <td>
+                    <button type="button" class="remark btn btn-primary" data-toggle="modal" id='.$row["com_id"].' data-target="#ModalCenter">
+                        Edit
+                    </button>
+                </td>
+                <td>
+                    <button type=" button" class=" complete btn btn-primary" id='.$row["com_id"].'>
+                        Completed
+                    </button>                
+                </td>
+                </tr>';
+                }
+            
+            ?>
+            </tbody>
+        </table>
+    </div>
            
 
         <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
@@ -232,40 +154,6 @@
 
         <!-- Footer -->
         <?php include 'partials/_footer.php'; ?>
-        <!-- <footer class="ftr">
-        <div>
-            <div>
-                <div class="row">
-                    <div class="col-12 col-md-6">
-                        <h5>Links</h5>
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class=" col-12 col-md-6 mt-5">
-                        <a class="btn btn-social-icon btn-google" href="http://google.com/+"><i
-                                class="fa fa-google-plus"></i></a>
-                        <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i
-                                class="fa fa-facebook"></i></a>
-                        <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i
-                                class="fa fa-linkedin"></i></a>
-                        <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i
-                                class="fa fa-twitter"></i></a>
-                        <a class="btn btn-social-icon btn-google" href="http://youtube.com/"><i
-                                class="fa fa-youtube"></i></a>
-                        <a class="btn btn-social-icon" href="mailto:"><i class="fa fa-envelope-o"></i></a>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-auto ">
-                        <p>© Copyright 2020 Aman Sonal</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer> -->
 
         <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
         <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
@@ -278,15 +166,6 @@
         </script>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"
             integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-        <script type="text/javascript">
-        $(window).on('scroll', function() {
-            if ($(window).scrollTop()) {
-                $('nav').addClass('black');
-            } else {
-                $('nav').removeClass('black');
-            }
-        })
-        </script>
         <script>
         edits = document.getElementsByClassName('remark');
         Array.from(edits).forEach((element) => {
@@ -295,8 +174,6 @@
                 console.log(e.target.id);
                 snoEdit.value = e.target.id;
                 //$('#ModalCenter').modal('toggle');
-
-
             })
         })
         </script>

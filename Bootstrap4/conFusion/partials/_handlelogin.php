@@ -19,7 +19,6 @@
             while($row = mysqli_fetch_assoc($result)){
                
                 if(password_verify($pass, $row['password'])){
-                    // setcookie("type" , $row['usermail'], time()+ 3600);
                     session_start();
                     $login = true;
                     $_SESSION['loggedin']=true;
@@ -30,7 +29,7 @@
                     $str = substr($row['user_mail'],0,$n);
                     if($str == 'KP-2' ||$str == 'KP-1' || $str == 'KP-3'|| $str == 'KP-4')
                     {
-                        header("location: \khms\Kitt-management-site\Bootstrap4\conFusion\warden-operating-page.php?loginsuccess=true&userid=$id");    
+                        header("location: /khms/Kitt-management-site/Bootstrap4/conFusion/wardenPage/wardenPage.php?loginsuccess=true&hostelId=$id");    
                         exit();
                     }else{
                      header("location: \khms\Kitt-management-site\Bootstrap4\conFusion\stcomplaint.php?loginsuccess=true&userid=$id");
@@ -39,7 +38,6 @@
                 }else{
                       $showError = "Invalid Credentials"; 
                     }
-                   
                 }
             }
         else{
